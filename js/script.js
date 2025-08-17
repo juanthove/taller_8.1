@@ -19,3 +19,15 @@ function showData(dataArray) {
 }
 
 // Escribe el código necesario para realizar el fetch al archivo con los datos y mostrar los estudiantes con la función showData
+async function getData(url){
+  let response = await fetch(url);
+  
+  if(response.ok){
+    let content = await response.json();
+    showData(content.students);
+  } else{
+    alert("HTTP error: " + response.status);
+  }
+}
+
+getData(DATA_URL);
